@@ -27,6 +27,7 @@
 
     <artifactId>dorado</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0-zp-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -70,16 +71,16 @@
             <!--<version>${project.parent.version}</version>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.meituan.octo</groupId>
-            <artifactId>mns-invoker</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>libthrift</artifactId>
-                    <groupId>org.apache.thrift</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.meituan.octo</groupId>-->
+            <!--<artifactId>mns-invoker</artifactId>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>libthrift</artifactId>-->
+                    <!--<groupId>org.apache.thrift</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
