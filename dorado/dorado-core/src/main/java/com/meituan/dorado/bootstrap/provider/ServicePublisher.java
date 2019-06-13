@@ -61,7 +61,7 @@ public class ServicePublisher extends ServiceBootstrap {
     }
 
     public static void publishService(ProviderConfig config) {
-        initHttpServer(RpcRole.PROVIDER);
+//        initHttpServer(RpcRole.PROVIDER);
 
         initAppkey(config.getAppkey());
         ServerFactory serverFactory = ExtensionLoader.getExtension(ServerFactory.class);

@@ -230,7 +230,7 @@ public class ThriftIDLSerializer extends ThriftMessageSerializer {
             }
             rpcResult.setReturnVal(realResult);
         } else if (message.type == TMessageType.EXCEPTION) {
-            TApplicationException exception = TApplicationException.read(protocol);
+            TApplicationException exception = TApplicationException.readFrom(protocol);
             MetaUtil.wrapException(exception, response);
         }
         if (!response.isOctoProtocol() && hasOldRequestHeader(protocol)) {

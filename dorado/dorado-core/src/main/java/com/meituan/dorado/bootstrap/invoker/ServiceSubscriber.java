@@ -39,7 +39,7 @@ public class ServiceSubscriber extends ServiceBootstrap {
     private static final Logger logger = LoggerFactory.getLogger(ServiceSubscriber.class);
 
     public static ClusterHandler subscribeService(ReferenceConfig config) {
-        initHttpServer(RpcRole.INVOKER);
+//        initHttpServer(RpcRole.INVOKER);
 
         ClientConfig clientConfig = genClientConfig(config);
         InvokerRepository repository;
