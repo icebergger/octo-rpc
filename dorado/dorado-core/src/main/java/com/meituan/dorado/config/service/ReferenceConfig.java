@@ -44,6 +44,9 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
     // ---连接相关---
     // mns, zookeeper://address
     private String registry;
+
+    private String registryGroup;
+
     // 直连配置ip:port, 可配置多个"," 分隔
     private String directConnAddress;
     // 用于直连时 是否使用统一协议的配置
@@ -337,4 +340,11 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
         this.env = env;
     }
 
+    public String getRegistryGroup() {
+        return registryGroup;
+    }
+
+    public void setRegistryGroup(String registryGroup) {
+        this.registryGroup = registryGroup;
+    }
 }

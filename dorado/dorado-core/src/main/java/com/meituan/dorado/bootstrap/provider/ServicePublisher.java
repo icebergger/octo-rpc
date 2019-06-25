@@ -131,6 +131,7 @@ public class ServicePublisher extends ServiceBootstrap {
         info.setVersion(VersionUtil.getDoradoVersion());
         info.setAttachments(attachments);
         info.setEnv(providerConfig.getEnv());
+        info.setRegistryGroup(providerConfig.getRegistryGroup());
         return info;
     }
 

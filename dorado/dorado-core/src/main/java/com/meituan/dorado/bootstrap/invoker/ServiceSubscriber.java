@@ -105,6 +105,7 @@ public class ServiceSubscriber extends ServiceBootstrap {
         info.setSerialize(cfg.getSerialize());
         info.setEnv(cfg.getEnv());
         info.setAttachments(attachments);
+        info.setRegistryGroup(cfg.getRegistryGroup());
         return info;
     }
 }

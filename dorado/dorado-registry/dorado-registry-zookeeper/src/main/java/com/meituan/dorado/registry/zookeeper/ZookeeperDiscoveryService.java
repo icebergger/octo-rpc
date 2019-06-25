@@ -183,9 +183,7 @@ public class ZookeeperDiscoveryService implements DiscoveryService {
     }
 
     private String generateNodePath(SubscribeInfo info) {
-        String envName = Constants.EnvType.getEnvType(info.getEnv()).getEnvName();
-        StringBuilder pathBuilder = new StringBuilder(ZooKeeperNodeInfo.PATH_SEPARATOR).append(ZooKeeperNodeInfo.ROOT_NAME)
-                .append(ZooKeeperNodeInfo.PATH_SEPARATOR).append(envName).append(ZooKeeperNodeInfo.PATH_SEPARATOR)
+        StringBuilder pathBuilder = new StringBuilder(info.getRegistryGroup()).append(ZooKeeperNodeInfo.PATH_SEPARATOR)
                 .append(info.getRemoteAppkey()).append(ZooKeeperNodeInfo.PATH_SEPARATOR).append(ZooKeeperNodeInfo.PROVIDER);
         return pathBuilder.toString();
     }

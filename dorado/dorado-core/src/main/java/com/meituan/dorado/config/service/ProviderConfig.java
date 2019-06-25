@@ -32,6 +32,9 @@ public class ProviderConfig implements Disposable {
     // mns, zookeeper://address?k=v&k=v; 没配置则从SPI中获取
     private String registry;
 
+    //zk path, /boss/thrift
+    private String registryGroup;
+
     // 协议
     private String protocol = Constants.ProtocolType.Thrift.getName();
     // 序列化类型, 默认thrift, 使用thrift时此配置无意义
@@ -194,4 +197,11 @@ public class ProviderConfig implements Disposable {
         this.env = env;
     }
 
+    public String getRegistryGroup() {
+        return registryGroup;
+    }
+
+    public void setRegistryGroup(String registryGroup) {
+        this.registryGroup = registryGroup;
+    }
 }
