@@ -108,6 +108,7 @@ public class RegistryTest {
         registryInfo.setWeight(10);
         registryInfo.setVersion(VersionUtil.getDoradoVersion());
         registryInfo.setEnv("test");
+        registryInfo.setRegistryGroup("/octo");
         registryInfo.setStatus(ProviderStatus.ALIVE.getCode());
         return registryInfo;
     }
@@ -119,6 +120,7 @@ public class RegistryTest {
         mnsSubscribeInfo.setServiceName("com.meituan.mtthrift.test.HelloService");
         mnsSubscribeInfo.setProtocol("thrift");
         mnsSubscribeInfo.setEnv("test");
+        mnsSubscribeInfo.setRegistryGroup("/octo");
 
         return mnsSubscribeInfo;
     }
