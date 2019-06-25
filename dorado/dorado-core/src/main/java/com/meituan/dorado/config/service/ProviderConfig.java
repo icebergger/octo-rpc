@@ -27,13 +27,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProviderConfig implements Disposable {
+    public static final String DEFAULT_REGISTRY_GROUP = "/thrift";
 
     protected String appkey;
     // mns, zookeeper://address?k=v&k=v; 没配置则从SPI中获取
     private String registry;
 
     //zk path, /boss/thrift
-    private String registryGroup;
+    private String registryGroup = DEFAULT_REGISTRY_GROUP;
 
     // 协议
     private String protocol = Constants.ProtocolType.Thrift.getName();

@@ -45,7 +45,7 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
     // mns, zookeeper://address
     private String registry;
 
-    private String registryGroup;
+    private String registryGroup = ProviderConfig.DEFAULT_REGISTRY_GROUP;
 
     // 直连配置ip:port, 可配置多个"," 分隔
     private String directConnAddress;
