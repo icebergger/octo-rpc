@@ -29,6 +29,20 @@
     <packaging>jar</packaging>
     <version>1.0.0-zp-SNAPSHOT</version>
 
+    <!-- 发布位置配置 -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Internal Release Repository</name>
+            <url>http://m2.kanzhun-inc.com/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Internal Snapshot Repository</name>
+            <url>http://m2.kanzhun-inc.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.meituan.octo</groupId>
