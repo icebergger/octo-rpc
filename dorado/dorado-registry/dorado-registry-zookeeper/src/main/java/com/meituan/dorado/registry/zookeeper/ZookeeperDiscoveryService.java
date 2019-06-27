@@ -76,6 +76,7 @@ public class ZookeeperDiscoveryService implements DiscoveryService {
                 zkClient.addChildNodeChangeListener(path, listener);
                 List<Provider> providers = genProviderList(path, info);
                 notifyListener.notify(providers);
+                registerConsumer(info);
                 logger.info("Subscribe on zookeeper[{}]: remoteAppkey={}, serviceName={}", address, info.getRemoteAppkey(), info.getServiceName());
             } else {
                 logger.warn("{} has subscribed service", info);
@@ -95,6 +96,7 @@ public class ZookeeperDiscoveryService implements DiscoveryService {
             } else {
                 logger.info("Have unsubscribe on zookeeper[{}]: remoteAppkey={}, serviceName={}", address, info.getRemoteAppkey(), info.getServiceName());
             }
+            unregisterConsumer(info);
         } catch (Throwable e) {
             throw new RegistryException("Failed to unsubscribe service " + info.getServiceName(), e);
         }
@@ -187,4 +189,33 @@ public class ZookeeperDiscoveryService implements DiscoveryService {
                 .append(info.getRemoteAppkey()).append(ZooKeeperNodeInfo.PATH_SEPARATOR).append(ZooKeeperNodeInfo.PROVIDER);
         return pathBuilder.toString();
     }
+
+    private String generateConsumerNodePath(SubscribeInfo info) {
+        StringBuilder pathBuilder = new StringBuilder(info.getRegistryGroup()).append(ZooKeeperNodeInfo.PATH_SEPARATOR)
+                .append(info.getRemoteAppkey()).append(ZooKeeperNodeInfo.PATH_SEPARATOR).append(ZooKeeperNodeInfo.CONSUMER)
+                .append(ZooKeeperNodeInfo.PATH_SEPARATOR).append(NetUtil.getLocalHost())
+                .append(Constants.COLON).append(ZooKeeperNodeInfo.getPid());
+        return pathBuilder.toString();
+    }
+
+    private synchronized void registerConsumer(SubscribeInfo info) {
+        try {
+            String path = generateConsumerNodePath(info);
+            zkClient.createNode(path, ZooKeeperNodeInfo.genConsumerNodeData(info));
+            logger.info("Register consumer on zookeeper[{}] path={}, info={}", address, path, info);
+        } catch (Throwable e) {
+            throw new RegistryException("Failed to register consumer: " + info.getLocalAppkey(), e);
+        }
+    }
+
+    private synchronized void unregisterConsumer(SubscribeInfo info) {
+        try {
+            String path = generateConsumerNodePath(info);
+            zkClient.delete(path);
+            logger.info("Unregister consumer on zookeeper[{}] path={}, info{}", address, path, info);
+        } catch (Throwable e) {
+            throw new RegistryException("Failed to unregister consumer: " + info.getLocalAppkey(), e);
+        }
+    }
+
 }
