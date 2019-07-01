@@ -106,9 +106,8 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
         if (destroyed) {
             return;
         }
-        if (clusterHandler != null) {
-            clusterHandler.destroy();
-        }
+        ServiceSubscriber.unsubscribeService(this);
+        clusterHandler = null;
         proxyObj = null;
         destroyed = true;
     }
@@ -158,7 +157,7 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
         }
         serviceName = serviceInterface.getName();
         if (!serviceInterface.isInterface()) {
-            serviceInterface = getSynIfaceInterface(serviceInterface);
+            serviceInterface = getSyncIfaceInterface(serviceInterface);
         }
 
         if (StringUtils.isBlank(registry)) {
@@ -186,6 +185,10 @@ public class ReferenceConfig<T> extends AbstractConfig implements Disposable {
                 throw new IllegalArgumentException("Service does not contain method " + methodName);
             }
         }
+    }
+
+    public ClusterHandler<?> getClusterHandler() {
+        return clusterHandler;
     }
 
     public String getRemoteAppkey() {
