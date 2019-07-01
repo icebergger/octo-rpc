@@ -31,7 +31,7 @@ public class OriginThriftClient {
             e.printStackTrace();
         } finally {
             transport.close();
-            ServiceBootstrap.clearGlobalResource();
+          //  ServiceBootstrap.clearGlobalResource();
         }
 
     }
