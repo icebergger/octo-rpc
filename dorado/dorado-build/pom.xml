@@ -192,6 +192,7 @@
                                     <!--<include>com.meituan.octo:dorado-registry-mns</include>-->
                                     <!-- 需要cat-client依赖 -->
                                     <!--<include>com.meituan.octo:dorado-trace-cat</include>-->
+                                    <include>com.meituan.octo:dorado-trace-file</include>
                                 </includes>
                             </artifactSet>
                             <transformers>
