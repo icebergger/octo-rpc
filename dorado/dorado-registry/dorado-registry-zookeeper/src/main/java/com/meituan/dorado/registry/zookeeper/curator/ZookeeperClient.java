@@ -214,6 +214,7 @@ public class ZookeeperClient {
             }
             nodeChangeWatcher.clear();
             client.close();
+            logger.info("ZookeeperClient[{}] closed.", address);
         } catch (Exception e) {
             logger.error("ZookeeperClient[{}] close failed.", address, e);
         }
