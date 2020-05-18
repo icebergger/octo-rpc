@@ -22,7 +22,7 @@
     <groupId>com.meituan.octo</groupId>
     <artifactId>dorado-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-zp-SNAPSHOT</version>
+    <version>1.0.1-zp</version>
     <modules>
         <module>dorado-demo</module>
         <module>dorado-test</module>
